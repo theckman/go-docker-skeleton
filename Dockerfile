@@ -31,4 +31,10 @@ ARG PACKAGE_IMPORT='github.com/theckman/go-docker-skeleton'
 
 COPY --from=build_container /go/src/$PACKAGE_IMPORT/example /usr/local/bin/example
 
+# run it as the nobody user
+#
+# so that your software being compromised doesn't result in them installing
+# packages.
+USER nobody
+
 ENTRYPOINT "/usr/local/bin/example"
