@@ -4,4 +4,9 @@ docker-build:
 docker-run:
 	docker run --rm -t go-docker-skeleton
 
-.PHONY: docker-build
+clean:
+	docker rmi go-docker-skeleton
+
+docker-clean: clean
+
+.PHONY: docker-build docker-run clean docker-clean
